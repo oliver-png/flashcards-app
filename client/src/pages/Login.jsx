@@ -3,7 +3,8 @@ import DynamicFeedOutlinedIcon from '@mui/icons-material/DynamicFeedOutlined';
 import LayersOutlinedIcon from '@mui/icons-material/LayersOutlined';
 import NoteOutlinedIcon from '@mui/icons-material/NoteOutlined';
 import ListAltOutlinedIcon from '@mui/icons-material/ListAltOutlined';
-
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as yup from "yup";
 
 function Login() {
 
@@ -48,6 +49,22 @@ function Login() {
     
   }, []);
 
+  const initialFormValues = {
+    username: "",
+    password: "",
+    confirmPassword: ""
+  }
+
+  const validationSchema = yup.object().shape({
+    username: yup.string().required("* Username is required"),
+    password: yup.string().required("* Password is required")
+    // confirmPassword: yup.string().oneOf([yup.ref('password'), null], "Passwords don't match!").required()
+  })
+
+  const onSubmit = data => {
+    console.log(data);
+  }
+
   const login = () =>{
     setAnimateOut({...animateOut, leftSide: !animateOut.leftSide});
     setTimeout(() => {
@@ -56,7 +73,7 @@ function Login() {
   }
 
   return (
-    <div className='loginContainer'>
+    <div className='loginPageContainer'>
       <div className= {`loginPageLeftSide ${animateOut.leftSide ? 'animateLogin': ''}`}>
         
         <div className='heading1 slideUp'><h1>Flash<span style={{color: "#141259"}}>Dex</span></h1></div>
@@ -88,9 +105,40 @@ function Login() {
         
         {headingVisible && <h2 className='slideUp'>Welcome</h2>}
       </div>
-      <div className='loginPageRightSide' onClick={login}></div>
+
+      <div className='loginPageRightSide'>
+        <div className='loginHeading'><h1>Log in</h1></div>
+        <Formik initialValues={initialFormValues} onSubmit={onSubmit} validationSchema={validationSchema}>
+          
+          <Form className='formContainer'>
+
+            <Field
+                className= "inputField"
+                name="username"
+                placeholder="Enter your username"
+             />
+            <ErrorMessage className='fieldError' name="username" component="span" />
+            <label className='inputUsernameLabel'>Username</label>
+
+            
+            <Field 
+                className="inputField"
+                name="password"
+                type="password"
+                placeholder="Enter your password"
+            />
+            <ErrorMessage className='fieldError' name="password" component="span" />
+            <label className='inputPasswordLabel'>Password</label>
+
+            <button className='loginBtn' type='submit'>Log in</button>
+
+          </Form>
+        
+        </Formik>
+      </div>
+
     </div>
   )
 }
 
-export default Login
+export default Login;
