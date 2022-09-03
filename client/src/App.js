@@ -1,24 +1,18 @@
-import './App.css';
 import { useState } from 'react';
+import {BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
+import Login from './pages/Login';
+import Home from './pages/Home';
 
 function App() {
-  const [flipped, setFlipped] = useState("");
-
-  const flipCard = () =>{
-    if (!flipped){
-      setFlipped("flip");
-    } else {
-      setFlipped("");
-    }
-  }
 
   return (
-    <div className='cardContainer' onClick={flipCard}>
-      <div className={"card " + flipped}>
-        <div className='front'><h1>front of card</h1></div>
-        <div className='back'><h1>back of card</h1></div>
-      </div>
-    </div>
+
+    <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+    </Router>
     
       
     
