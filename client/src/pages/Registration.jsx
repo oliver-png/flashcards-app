@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
 import { useNavigate} from "react-router-dom"
+import axios from "axios";
+import "../App.css";
 
 function Registration() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
   const navigate = useNavigate();
   const initialFormValues = {
     username: "",
@@ -17,15 +22,29 @@ function Registration() {
     confirmPassword: yup.string().oneOf([yup.ref('password'), null], "* Passwords don't match!").required("* Password is required")
   })
 
-  const onSubmit = data => {
-    console.log(data);
-    navigate("/login");
+  const registerUser = data => {
+    
+    axios({
+      method: "POST",
+      data: {
+        username: data.username,
+        password: data.password
+      },
+      withCredentials: true,
+      url: "http://localhost:4000/register"
+    }).then(response => {
+      if (!response.data.error){
+        navigate("/");
+      } else {
+        console.log(response.data.error);
+      }
+    });
   }
 
   return (
     <div className='registerPageContainer'>
       <h1 className='signupHeading'>Sign up</h1>
-      <Formik initialValues={initialFormValues} onSubmit={onSubmit} validationSchema={validationSchema}>
+      <Formik initialValues={initialFormValues} onSubmit={registerUser} validationSchema={validationSchema}>
           
           <Form className='formContainer'>
 
