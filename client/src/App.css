@@ -1,8 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Sen:wght@400&display=swap');
 
+
+
 body{
     margin: 0;
 }
+
 
 .homeContainer {
     background-color: #0a092d;
@@ -82,8 +85,9 @@ body{
 .loginPageLeftSide{
     font-family: 'Sen', sans-serif;
     /* font-family: Arial, Helvetica, sans-serif; */
-    background-color: #277BC0;
-    height: 100vh;
+    /* background-color: #277BC0; */
+    background-color: #3AB4F2;
+    min-height: 100vh;
     width: 50%;
     
 }
@@ -101,7 +105,6 @@ body{
 .loginPageRightSide {
     height: 100vh;
     width: 50%;
-    cursor: pointer;
 }
 
 @keyframes slideUp {
@@ -226,3 +229,117 @@ body{
     margin-left: 12.5vw;
 }
 
+.homePageContainer{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    background-color: #0a092d;
+    min-height: 100vh;
+    font-family: 'Sen', sans-serif;
+}
+
+.navbar {
+    height: 66px;
+    border-bottom: 0.0625rem solid #282e3e;
+    display: flex;
+}
+
+.navbar h2 {
+    display: inline-flex;
+    margin: 0;
+    font-size: 30px;
+    height: 46px;
+    padding-top: 15px;
+    margin-left: 20px;
+}
+
+.navbar p:hover{
+    border-bottom: 2.5px solid #423ed8;
+}
+
+
+.navbar p {
+    /* font-size: 2vh; */
+    font-size: 15px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 24px;
+    margin-left: 50px;
+    font-weight: 600; 
+    height: 39.5px;
+}
+.navbar p.homeLink{
+    margin-left: 80px;
+}
+
+.navbar div.logoutLink{
+    margin-left: 5vw;
+}
+
+.navbar span {
+    color: #3AB4F2;
+}
+
+.decksHeading{
+    margin: 0 18.5vw;
+    margin-top: 8vh;
+    margin-bottom: 4vh;
+    
+}
+
+.homeBody{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 0 18.4vw;
+    margin-top: 0.5vh;
+    /* border: 5px solid black; */
+    min-height: 40vh;
+    justify-content:flex-start;
+}
+
+.homeBody div{
+    background-color: #2e3856;
+    width: 350px;
+    height: 175px;
+    margin: 10px;
+    border-radius: 8px;
+    border: 2.5px solid transparent;
+    box-shadow: 1px 0px 5px #2e3856;
+    cursor: pointer;
+    padding: 0 10px;
+}
+
+.homeBody div h3{
+    height: 50%;
+}
+
+.homeBody div p{
+    margin: 0;
+    opacity: 0.5;
+}
+
+.homeBody div:hover{
+    border-bottom: 2.5px solid #3AB4F2;
+}
+
+.addDeck{
+    border: 2px dashed #2e3856 !important;
+    background-color: transparent !important;
+    /* width: 347px !important;
+    height: 172px !important; */
+    box-shadow: none !important;
+    text-align: center;
+}
+
+.addDeck .addIcon{
+    color: #2e3856;
+    margin: 31.5px 0;
+    font-size: 7rem;
+    opacity: 0.5;
+}
+
+.homeBody div p{
+    margin: 0;
+    opacity: 0.5;
+}
