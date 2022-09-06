@@ -5,8 +5,12 @@ import NoteOutlinedIcon from '@mui/icons-material/NoteOutlined';
 import ListAltOutlinedIcon from '@mui/icons-material/ListAltOutlined';
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
+
+  const navigate = useNavigate();
 
   const [headingVisible, setHeadingVisible] = useState(false);
   const [animate, setAnimate] = useState({
@@ -65,11 +69,27 @@ function Login() {
     console.log(data);
   }
 
-  const login = () =>{
-    setAnimateOut({...animateOut, leftSide: !animateOut.leftSide});
-    setTimeout(() => {
-      setHeadingVisible(!headingVisible);
-    }, 1500);
+  const login = (data) =>{
+    axios({
+      method: "POST",
+      data: {
+        username: data.username,
+        password: data.password
+      },
+      withCredentials: true,
+      url: "http://localhost:4000/login"
+    }).then(response => {
+      if (!response.data.error){
+        navigate("/");
+      } else {
+        console.log(response.data.error);
+      }
+    });
+
+    // setAnimateOut({...animateOut, leftSide: !animateOut.leftSide});
+    // setTimeout(() => {
+    //   setHeadingVisible(!headingVisible);
+    // }, 1500);
   }
 
   return (
@@ -108,7 +128,7 @@ function Login() {
 
       <div className='loginPageRightSide'>
         <div className='loginHeading'><h1>Log in</h1></div>
-        <Formik initialValues={initialFormValues} onSubmit={onSubmit} validationSchema={validationSchema}>
+        <Formik initialValues={initialFormValues} onSubmit={login} validationSchema={validationSchema}>
           
           <Form className='formContainer'>
 
