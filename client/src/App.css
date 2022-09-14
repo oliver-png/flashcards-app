@@ -9,25 +9,24 @@ body{
 
 .homeContainer {
     background-color: #0a092d;
-    height: 100vh;
-    
+    min-height: 100vh;
+    color: white;
+    font-family: 'Sen', sans-serif;
 }
 
 .cardContainer{
     margin: 0 auto;
-    padding-top: 50px;
+    padding-top: 5px;
     position: relative;
     width: 688px;
     height: 350px;
     border-radius: 10px;
     perspective: 1000px;
-    
-    
+    text-align: center;
 }
 
 .card {
     cursor: pointer;
-    position: absolute;
     width: 100%;
     height: 100%;
     transform-style: preserve-3d;
@@ -58,7 +57,9 @@ body{
 }
 
 .front h1, .back h1{
+    font-family: 'Sen', sans-serif;
     font-weight: 300;
+    padding-top: 100px !important;
 }
 
 .back{
@@ -199,7 +200,7 @@ body{
     font-weight: bold;
 }
 
-.loginBtn{
+.loginBtn, .createDeckSubmitBtn{
     height: 45px;
     border: 0;
     border-radius: 5px;
@@ -232,16 +233,19 @@ body{
 .homePageContainer{
     display: flex;
     flex-direction: column;
+    font-family: 'Sen', sans-serif;
     color: white;
     background-color: #0a092d;
     min-height: 100vh;
-    font-family: 'Sen', sans-serif;
+    
 }
 
 .navbar {
     height: 66px;
     border-bottom: 0.0625rem solid #282e3e;
     display: flex;
+    font-family: 'Sen', sans-serif;
+    color: white;
 }
 
 .navbar h2 {
@@ -253,10 +257,9 @@ body{
     margin-left: 20px;
 }
 
-.navbar p:hover{
+.navbar p:hover, .activeLink{
     border-bottom: 2.5px solid #423ed8;
 }
-
 
 .navbar p {
     /* font-size: 2vh; */
@@ -343,3 +346,152 @@ body{
     margin: 0;
     opacity: 0.5;
 }
+
+.deckNameInput{
+    background-color: #2e3856;
+    border: 5px solid transparent;
+    outline: none;
+    height: 40px;
+    border-radius: 12px;
+    font-family: 'Sen', sans-serif;
+    color: white;
+    margin-bottom: 40px;
+    font-size: 18px;
+    width: 60%;
+}
+
+.deckNameInput::placeholder{
+    color: white;
+    opacity: 0.6;
+}
+
+.deckInputError{
+    margin-top: -37px !important;
+    margin-bottom: 30px;
+    color: red;
+}
+
+.deckDescriptionInput{
+    height: 100px;
+    resize: none;
+}
+
+.createDeckSubmitBtn{
+    width: 61.5%;
+    border: 5px solid transparent;
+    border-radius: 12px;
+    background-color: #3AB4F2;
+}
+
+.createDeckFormContainer{
+    align-items: center;
+}
+
+.btnContainer {
+    margin-top: 10px;
+}
+
+.btnContainer button {
+    /* background-color: #2e3856; */
+    background-color: #3AB4F2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    width: 48%;
+    height: 50px;
+}
+
+.deckTitleDescription{
+    width: 688px;
+    margin: 0 auto;
+}
+
+.cardList {
+    margin: 0 auto;
+    margin-top: 85px;
+    min-height: 200px;
+    width: 688px;
+    padding-bottom: 20px;
+}
+
+.cardListItem {
+    border: 4px solid transparent;
+    min-height: 50px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 8px;
+    background-color: #2e3856;
+    margin-bottom: 10px;
+}
+
+.cardListItem div{
+    text-align: center;
+    width: 50%;
+    min-height: 50px;
+    padding: 20px 15px 5px 15px;
+}
+
+.showBtn {
+    margin-left: 540px;
+}
+
+.showBtn button {
+    font-family: 'Sen', sans-serif;
+    border-radius: 10px;
+    background-color: #3AB4F2;
+    color: white;
+    padding: 5px;
+}
+
+.addCardListItem {
+    min-height: 50px;
+    border: 3px dashed #2e3856;
+    padding: 14px 15px 10px 15px;
+    border-radius: 8px;
+    text-align: center;
+    color: #2e3856;
+}
+
+.addIconDeckPage {
+    font-size: 3rem !important;
+}
+
+.newCardFormContainer {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+    justify-content: center;
+    background-color: #2e3856;
+    border-radius: 8px;
+    padding-bottom: 10px;
+}
+
+.newCardTextArea {
+    resize: none;
+    outline: none;
+    height: 50px;
+    width: 300px;
+    border-radius: 8px;
+    padding: 5px;
+    background-color: #282e3e;
+    border-color: #3AB4F2;
+    color: white;
+    font-family: 'Sen', sans-serif;
+}
+
+.newCardTextArea::placeholder{
+    font-family: 'Sen', sans-serif;
+    color: white;
+    opacity: 0.6;
+}
+
+.addCardBtn {
+    font-family: 'Sen', sans-serif;
+    margin-top: 21px;
+    border-radius: 8px;
+    color: white;
+    background-color: #3AB4F2;
+    border: none;
+    margin-left: 220px;
+}
+
