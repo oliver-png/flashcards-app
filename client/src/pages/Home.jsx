@@ -25,12 +25,16 @@ function Home() {
     });
   }, []);
 
+  const toCreateDeckPage = () =>{
+    navigate("/create");
+  }
+
 
   return (
     <div className='homePageContainer'>
       <div className='navbar'>
         <div><h2>Flash<span>Dex</span></h2></div>
-        <div><p className='homeLink'>Home</p></div>
+        <div><p className='homeLink activeLink'>Home</p></div>
         <div><p>About</p></div>
         <div className='logoutLink'><p>Log out</p></div>
       </div>
@@ -38,13 +42,13 @@ function Home() {
       <h2 className='decksHeading'>Your decks</h2>
       <div className='homeBody'>
         {decks.map(deck => (
-          <div>
+          <div key={deck._id} onClick={() => {navigate(`/deck/${deck._id}`)}}>
             <h3>{deck.name}</h3>
             <p>{`${deck.cards.length} ${deck.cards.length === 1 ? 'card' : 'cards'} `}</p>
             <p>{`Created ${deck.dateCreated}`}</p>
           </div>
         ))}
-        <div className='addDeck'>
+        <div className='addDeck' onClick={toCreateDeckPage}>
           <AddCircleIcon className='addIcon'/>
         </div>
         
