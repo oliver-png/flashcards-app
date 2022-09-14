@@ -32,9 +32,10 @@ mongoose.connect(process.env.MONGO_URI, () => {
 
 const defaultDeck = {
   name: "Your first deck",
+  description: "Welcome to your first deck! Use left click to flip cards. Happy studying!",
   cards: [
     {
-      question: "What planet is furthest from the sun?",
+      question: "Which planet is farthest from the sun?",
       answer: "Neptune"
     }
   ],
@@ -93,12 +94,46 @@ app.post("/register", async (req, res) =>{
 
 });
 
+app.post("/", async(req, res) => {
+  const user = await User.findOne({username: req.user.username});
+  const newDeck = {
+    name: req.body.deckName,
+    cards: [],
+    dateCreated: new Date().toLocaleDateString(),
+    description: req.body.description ? req.body.description : null
+  }
+  user.decks.push(newDeck);
+  user.save();
+
+  req.logIn(user, async(err) => {
+    if (err){
+      res.send(err);
+    }
+  });
+  res.send("successful");
+  
+})
+
 app.post("/auth", (req, res) => {
   if (req.user){
     res.send(req.user)
   } else {
     res.send({error: "User not logged in"});
   }
+});
+
+app.post("/deck/:deckId", async (req, res) => {
+  console.log(req.body);
+  const user = await User.findOne({username: req.user.username});
+  const deck = user.decks.id(req.params.deckId);
+  deck.cards.push(req.body);
+  user.save();
+  req.logIn(user, async(err) => {
+    if (err){
+      res.send(err);
+    }
+  });
+  res.send(deck);
 });
 
 app.listen(4000, () => {
