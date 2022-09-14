@@ -136,6 +136,7 @@ function Login() {
                 className= "inputField"
                 name="username"
                 placeholder="Enter your username"
+                autoComplete="off"
              />
             <ErrorMessage className='fieldError' name="username" component="span" />
             <label className='inputUsernameLabel'>Username</label>
