@@ -18,7 +18,8 @@ const deckSchema = new mongoose.Schema({
     required: true
   },
   cards: [cardSchema],
-  dateCreated: String
+  dateCreated: String,
+  description: String
 });
 
 const userSchema = new mongoose.Schema({
